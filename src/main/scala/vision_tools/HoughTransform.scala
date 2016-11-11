@@ -11,20 +11,24 @@ class HoughTransform(points:List[Point]) {
       line = new MCLine(point)
     } yield line
   }
-
-  def intersections():Map[Point, List[Double]] = {
-    var m = Map[Point, List[Double]]()
+  /*
+    def intersections():List[Point] = {
+      var m = List[Point]()
       for(
         point <- points;
         line = new MCLine(point);
         inter = line.intersect(lines)
-      )
-    {
-      m += (point -> inter)
+      )yield inter
+      }
     }
-    m
-    }
+    */
 
-
+  def intersections():List[List[Point]] = {
+    for (
+      point <- points;
+      line = new MCLine(point);
+      inter = line.intersect(lines)
+    ) yield inter
+  }
 
 }

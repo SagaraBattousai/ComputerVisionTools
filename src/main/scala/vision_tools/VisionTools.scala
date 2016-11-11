@@ -22,7 +22,6 @@ object VisionTools {
     val l = new MCLine(points(9))
     val l2 = new MCLine(points(1))
     val ll = new MCLine(points(0))
-
     val lines:List[MCLine] = for{
                     point <- points
                     line = new MCLine(point)
@@ -30,13 +29,18 @@ object VisionTools {
 
     val h = new HoughTransform(points)
 
-    println(lines)
+    val intersect = h.intersections().flatten
 
-    println(l.intersect(lines))
+    println(intersect)
+    println(intersect.map(_.floor(10,1)))
 
-    println(l.intersect(ll))
+    val hist = new IntersectionHistogram(10, 10)
 
-    println(h.intersections())
+    hist.updateHistogram(intersect)
+    println(hist)
+
+
+
 
 
 

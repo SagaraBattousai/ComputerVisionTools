@@ -20,19 +20,16 @@ class MCLine(line:String) {
 
   def $(m:Double):Double = y + (x * m)
 
-  def intersect(other:MCLine):Double = {
+  def intersect(other:MCLine):Point = {
     val y = this.y - other.y
     val x = other.x - this.x
-    return y/x
-
+    val m = y/x
+    new Point(m,this.$(m))
   }
 
-  def intersect(lines:List[MCLine]):List[Double] = {
-    for {
-      line <- lines.filter(_ != this)
-      intersections = intersect(line)
-    } yield intersections
-
+  def intersect(lines:List[MCLine]):List[Point] = {
+    val otherLines = lines.filter(_ != this)
+    otherLines.map(intersect)
   }
 
   override def toString: String = line

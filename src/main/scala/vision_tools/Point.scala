@@ -9,6 +9,10 @@ class Point(_x:Double,_y: Double) {
 
   def y = _y
 
+  def floor(xScale:Int, yScale:Int):(Int, Int) = ((x * xScale).floor.toInt, (y * yScale).floor.toInt)
+
+  def floor():(Int, Int) = floor(1,1)
+
   override def toString: String = "[" + x + ", " + y + "]"
 
 
