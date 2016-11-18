@@ -19,29 +19,16 @@ object VisionTools {
                       new Point(14.3,10)
                      )
 
-    val l = new MCLine(points(9))
-    val l2 = new MCLine(points(1))
-    val ll = new MCLine(points(0))
-    val lines:List[MCLine] = for{
-                    point <- points
-                    line = new MCLine(point)
-                   }yield line
 
-    val h = new HoughTransform(points)
+    val k = Array.ofDim[Double](5,5)
 
-    val intersect = h.intersections().flatten
+    k(0) = Array(0.0,0.0,0.0,0.0,0.0)
+    k(1) = Array(0.0,0.1,0.1,0.1,0.0)
+    k(2) = Array(0.0,0.1,1.0,0.1,0.0)
+    k(3) = Array(0.0,0.1,0.1,0.1,0.0)
+    k(4) = Array(0.0,0.0,0.0,0.0,0.0)
 
-    println(intersect)
-    println(intersect.map(_.floor(10,1)))
-
-    val hist = new IntersectionHistogram(10, 10)
-
-    hist.updateHistogram(intersect)
-    println(hist)
-
-
-
-
+    val rel = new Relaxation(k)
 
 
 
