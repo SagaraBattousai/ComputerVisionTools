@@ -42,9 +42,15 @@ object VisionTools {
     hist.updateHistogram(intersect)
     println(hist)
 
+    val k = Array.ofDim[Double](5,5)
 
+    k(0) = Array(0.0,0.0,0.0,0.0,0.0)
+    k(1) = Array(0.0,0.1,0.1,0.1,0.0)
+    k(2) = Array(0.0,0.1,1.0,0.1,0.0)
+    k(3) = Array(0.0,0.1,0.1,0.1,0.0)
+    k(4) = Array(0.0,0.0,0.0,0.0,0.0)
 
-
+    val rel = new Relaxation(k)
 
 
 
