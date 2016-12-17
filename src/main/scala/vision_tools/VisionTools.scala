@@ -32,13 +32,15 @@ object VisionTools {
     val intersect = h.intersections().flatten
 
     println(intersect)
+
+    //intersect.foreach(p => println(p.toString + "\n"))
+
     println(intersect.map(_.floor(10,1)))
 
     val hist = new IntersectionHistogram(10, 10)
 
     hist.updateHistogram(intersect)
     println(hist)
-
 
 
 

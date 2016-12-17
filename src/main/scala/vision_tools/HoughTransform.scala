@@ -27,7 +27,7 @@ class HoughTransform(points:List[Point]) {
     for (
       point <- points;
       line = new MCLine(point);
-      inter = line.intersect(lines)
+      inter = line.intersect(lines).distinct
     ) yield inter
   }
 

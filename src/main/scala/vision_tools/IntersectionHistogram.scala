@@ -15,8 +15,12 @@ class IntersectionHistogram(xRange:Int, yRange:Int) {
 
   def updateHistogram(points:List[Point]):Unit = {
     val floorPoints = points.map(_.floor(10,1))
-
-      for ( p <- floorPoints) histogram(p._2)(p._1) += 1
+      var i = 1
+      for ( p <- floorPoints) {
+        println(i + ": " + p)
+        histogram(p._2)(p._1) += 1
+        i += 1
+      }
 
   }
 

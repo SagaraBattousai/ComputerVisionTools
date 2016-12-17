@@ -15,5 +15,24 @@ class Point(_x:Double,_y: Double) {
 
   override def toString: String = "[" + x + ", " + y + "]"
 
+  override def hashCode(): Int = {
+    var hash = 23
+    val hashscale = 31
+    val intpoint = this.floor()
+    hash = hash * hashscale + intpoint._1
+    hash = hash * hashscale + intpoint._2
+    hash
+  }
+
+  override def equals(obj: scala.Any): Boolean = {
+    var equals = false
+    if(obj.isInstanceOf[Point]) {
+      val other = obj.asInstanceOf[Point]
+
+      equals = (other.x == this.x) && (other.y == this.y);
+    }
+    equals
+  }
+
 
 }
